@@ -3,7 +3,12 @@ const mongoose = require("mongoose");
 const PORT = process.env.PORT || 5000
 const app = express();
 
-mongoose.connect("mongodb+srv://darshan:wSLWyjopJKwjAyPw@cluster0.ctb0u.mongodb.net/shareFolioDatabase?retryWrites=true&w=majority", {
+//DotEnv
+require('dotenv').config();
+let mongoURL = process.env.MongoDB_URL;
+
+//Mongo Connection
+mongoose.connect(mongoURL, {
     useNewUrlParser : true,
     useUnifiedTopology : true,
     useCreateIndex : true,
