@@ -24,14 +24,14 @@ router.post("/add" , async(req,res) => {
 
 router.get("/:UUID", async (req,res) => {
     try{
-        const result = await ShareFolio.find({UUID : req.params.UUID});
+        const result = await ShareFolio.find({UUID : req.params.UUID}, "-__v");
         res.status(200).json({
             Type : "About",
             status : "OK",
             totalResults : result.length.toString(),
             isFilled : result.length > 0 ? true : false,
             UUID : req.params.UUID,
-            data : result[0],
+            data : result,
         });
     }
     catch(error){
