@@ -28,14 +28,14 @@ router.post("/add" , async(req,res) => {
 
 router.get("/:UUID", async (req,res) => {
     try{
-        const result = await Education.find({UUID : req.params.UUID});
+        const result = await Education.find({UUID : req.params.UUID}, "-__v");
         res.status(200).json({
             Type : "Education",
             status : "OK",
             totalResults : result.length.toString(),
             isFilled : result.length > 0 ? true : false,
             UUID : req.params.UUID,
-            education : result,
+            education : result[0],
         });
     }
     catch(error){
