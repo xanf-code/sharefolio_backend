@@ -43,7 +43,7 @@ router.patch('/update/:UUID', async (req,res) => {
     try{
     const options = { returnNewDocument: true };
     const updates = req.body;
-    await Skills.findOneAndUpdate({"UUID" : req.params.UUID} , {$set : updates }, options, "-__v").then(() => {
+    await Skills.findOneAndUpdate({"UUID" : req.params.UUID} , {$set : updates }, options).then(() => {
         res.status(200).json("Updated");
     });
     }

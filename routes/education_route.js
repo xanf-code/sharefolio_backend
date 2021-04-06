@@ -48,7 +48,7 @@ router.patch('/update/:id', async (req,res) => {
     const options = { returnNewDocument: true };
     const id = req.params.id;
     const updates = req.body;
-    await Education.findByIdAndUpdate(id , updates , options, "-__v").then(() => {
+    await Education.findByIdAndUpdate(id , updates , options).then(() => {
         res.status(200).json("Updated");
     });
     }
