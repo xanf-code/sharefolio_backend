@@ -31,7 +31,7 @@ router.get("/:UUID", async (req,res) => {
             totalResults : result.length.toString(),
             isFilled : result.length > 0 ? true : false,
             UUID : req.params.UUID,
-            data : result,
+            data : result[0],
         });
     }
     catch(error){
