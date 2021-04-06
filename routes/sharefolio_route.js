@@ -26,12 +26,13 @@ router.get("/:UUID", async (req,res) => {
     try{
         const result = await ShareFolio.find({UUID : req.params.UUID}, "-__v");
         res.status(200).json({
-            Type : "About",
-            status : "OK",
-            totalResults : result.length.toString(),
             isFilled : result.length > 0 ? true : false,
-            UUID : req.params.UUID,
-            data : result[0],
+            Name: result[0].Name,
+            Type: result[0].Type,
+            Bio: result[0].Bio,
+            Location: result[0].Location,
+            _id: result[0]._id,
+            UUID: result[0].UUID,
         });
     }
     catch(error){
