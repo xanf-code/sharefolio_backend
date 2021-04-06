@@ -1,3 +1,4 @@
+const { query } = require("express");
 const express = require("express");
 const Education = require("../models/education_model");
 
@@ -45,7 +46,7 @@ router.patch('/update/:id', async (req,res) => {
     const options = { returnNewDocument: true };
     const id = req.params.id;
     const updates = req.body;
-    await Education.findByIdAndUpdate(id , updates , options).then(() => {
+    await Education.findByIdAndUpdate(id , updates , options, "-__v").then(() => {
         res.status(200).json("Updated");
     });
     }
@@ -54,4 +55,36 @@ router.patch('/update/:id', async (req,res) => {
     }
 });
 
+router.delete('/delete/:id', async (req,res) => {
+    try{
+    const id = req.params.id;
+    await Education.findByIdAndDelete(id).then(() => {
+        res.status(200).json("Deleted");
+    });
+    }
+    catch(error){
+        console.log(error);
+    }
+});
+
+
 module.exports = router;
+
+//WITH QUERY PARAMS
+
+// router.get("/", async (req,res) => {
+//     try{
+//         const query = req.query;
+//         const result = await Education.find(query);
+//         res.status(200).json({
+//             Type : "Education",
+//             status : "OK",
+//             totalResults : result.length.toString(),
+//             UUID : req.params.UUID,
+//             education : result,
+//         });
+//     }
+//     catch(error){
+//         console.log(error);
+//     }
+// })
