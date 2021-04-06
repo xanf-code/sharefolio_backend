@@ -17,6 +17,7 @@ router.post("/add" , async(req,res) => {
             type : req.body.type,
         });
         await education.save().then(() => {
+            console.log("Education added");
             res.status(200).json(education);
         });
     }
@@ -32,6 +33,7 @@ router.get("/:UUID", async (req,res) => {
             Type : "Education",
             status : "OK",
             totalResults : result.length.toString(),
+            isFilled : result.length > 0 ? true : false,
             UUID : req.params.UUID,
             education : result,
         });

@@ -10,6 +10,7 @@ router.post("/add" , async(req,res) => {
             skills : req.body.skills,
         });
         await skills.save().then(() => {
+            console.log("skills added");
             res.status(200).json(skills);
         });
     }
@@ -25,6 +26,7 @@ router.get("/:UUID", async (req,res) => {
             Type : "Skills",
             status : "OK",
             totalResults : result.length.toString(),
+            isFilled : result.length > 0 ? true : false,
             UUID : req.params.UUID,
             skills : result[0]["skills"],
         });

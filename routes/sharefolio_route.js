@@ -13,6 +13,7 @@ router.post("/add" , async(req,res) => {
             Location : req.body.Location,
         });
         await sharefolio.save().then(() => {
+            console.log("success");
             res.status(200).json("ok");
         });
     }
@@ -28,6 +29,8 @@ router.get("/:UUID", async (req,res) => {
             Type : "About",
             status : "OK",
             totalResults : result.length.toString(),
+            isFilled : result.length > 0 ? true : false,
+            UUID : req.params.UUID,
             data : result[0],
         });
     }

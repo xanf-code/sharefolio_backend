@@ -5,7 +5,6 @@ const router = express.Router();
 
 
 router.route("/register").post((req,res) => {
-    console.log("Register Page");
     const user = new User({
         username : req.body.username,
         email : req.body.email,
