@@ -30,6 +30,8 @@ const skillsRouter = require("./routes/skills_routes");
 app.use("/skills",skillsRouter);
 const educationRouter = require("./routes/education_route");
 app.use("/education",educationRouter);
+const cardsRouter = require("./routes/cards-rotes");
+app.use("/cards",cardsRouter);
 
 app.route("/").get((req,res) => res.json("Root"));
 
