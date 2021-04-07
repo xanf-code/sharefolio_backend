@@ -33,6 +33,8 @@ app.use("/education",educationRouter);
 const cardsRouter = require("./routes/cards-rotes");
 app.use("/cards",cardsRouter);
 
+//Main Route
 app.route("/").get((req,res) => res.json("Root"));
 
+//Access Log
 app.listen(PORT, ()=> console.log(`Server running successfully at ${PORT}`));
