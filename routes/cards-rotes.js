@@ -22,8 +22,9 @@ router.post("/add" , async(req,res) => {
             }
         });
         await cards.save().then(() => {
-            console.log("Card added");
-            res.status(200).json(cards);
+            res.status(200).json({
+                Status : "OK",
+            });
         });
     }
     catch(error){
@@ -52,7 +53,9 @@ router.delete('/delete/:id', async (req,res) => {
     try{
     const id = req.params.id;
     await Cards.findByIdAndDelete(id).then(() => {
-        res.status(200).json("Deleted");
+        res.status(200).json({
+            Status : "OK",
+        });
     });
     }
     catch(error){

@@ -17,8 +17,9 @@ router.post("/add" , async(req,res) => {
             type : req.body.type,
         });
         await education.save().then(() => {
-            console.log("Education added");
-            res.status(200).json(education);
+            res.status(200).json({
+                Status : "OK",
+            });
         });
     }
     catch(error){
@@ -49,7 +50,9 @@ router.patch('/update/:id', async (req,res) => {
     const id = req.params.id;
     const updates = req.body;
     await Education.findByIdAndUpdate(id , updates , options).then(() => {
-        res.status(200).json("Updated");
+        res.status(200).json({
+            Status : "OK",
+        });
     });
     }
     catch(error){
@@ -61,7 +64,9 @@ router.delete('/delete/:id', async (req,res) => {
     try{
     const id = req.params.id;
     await Education.findByIdAndDelete(id).then(() => {
-        res.status(200).json("Deleted");
+        res.status(200).json({
+            Status : "OK",
+        });
     });
     }
     catch(error){

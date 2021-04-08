@@ -10,8 +10,9 @@ router.post("/add" , async(req,res) => {
             skills : req.body.skills,
         });
         await skills.save().then(() => {
-            console.log("skills added");
-            res.status(200).json(skills);
+            res.status(200).json({
+                Status : "OK",
+            });
         });
     }
     catch(error){
@@ -44,7 +45,9 @@ router.patch('/update/:UUID', async (req,res) => {
     const options = { returnNewDocument: true };
     const updates = req.body;
     await Skills.findOneAndUpdate({"UUID" : req.params.UUID} , {$set : updates }, options).then(() => {
-        res.status(200).json("Updated");
+        res.status(200).json({
+            Status : "OK",
+        });
     });
     }
     catch(error){
