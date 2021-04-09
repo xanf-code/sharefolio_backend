@@ -5,18 +5,23 @@ const Schema = mongoose.Schema;
 const MapSchema = new Schema({
     facebook : {
         type : String,
+        default : " ",
     },
     twitter :  {
         type : String,
+        default : " ",
     },
     instagram :  {
         type : String,
+        default : " ",
     },
     linkedin :  {
         type : String,
+        default : " ",
     },
     sharefolio :  {
         type : String,
+        default : " ",
     }
 });
 
@@ -31,19 +36,15 @@ const Cards = Schema({
     },
     name : {
         type : String,
-        
     },
     title : {
-        type : String,
-        
+        type : String, 
     },
     company : {
-        type : String,
-       
+        type : String,     
     },
     email : {
-        type : String,
-        
+        type : String,   
     },
     phoneNumber : {
         type : String,
